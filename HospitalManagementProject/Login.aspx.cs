@@ -19,7 +19,7 @@ namespace HospitalManagementProject
         protected void Page_Load(object sender, EventArgs e)
         {
             con = new SqlConnection();
-            con.ConnectionString = "Data Source=DESKTOP-EFJGF36;Initial Catalog=Hospital;Persist Security Info=true;User Id= sa ; Password=#admin46";
+            con.ConnectionString = "Data Source=HP;Initial Catalog=Hospital;Persist Security Info=true;User Id= sa ; Password=test@123";
             con.Open();
             //Console.WriteLine("connection");
 

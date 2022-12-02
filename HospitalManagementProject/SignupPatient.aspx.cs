@@ -28,7 +28,7 @@ namespace HospitalManagementProject
         protected void Page_Load(object sender, EventArgs e)
         {
             con = new SqlConnection();
-            con.ConnectionString = "Data Source=DESKTOP-EFJGF36;Initial Catalog=Hospital;Persist Security Info=true;User Id= sa ; Password=#admin46";
+            con.ConnectionString = "Data Source=HP;Initial Catalog=Hospital;Persist Security Info=true;User Id= sa ; Password=test@123";
             con.Open();
             //Console.WriteLine("connection");
             
@@ -38,8 +38,10 @@ namespace HospitalManagementProject
 
         protected void Submit_Click(object sender, EventArgs e)
         {
-            string name = tname.Text;
+            string fname = tfname.Text;
+            string lname = tlname.Text;
             string dob = tdob.Text;
+            string bg = tbg.SelectedValue;
             string gender = string.Empty;
             if (rbMale.Checked)
             {
@@ -49,14 +51,20 @@ namespace HospitalManagementProject
             {
                 gender = "F";
             }
-            string bg = tbg.SelectedValue;
+            else 
+                {
+                gender = "o";
+            }
+            string username = tuname.Text;
+            string password = tpassword.Text;
+            string confirmpassword = tconpassword.Text;
             long mob = Convert.ToInt64(tmno.Text);
-            string pwd = tpassword.Text;
+            string email = temail.Text;
+            string address = "kollam";
 
-
-            string s = "Insert into PReg values("+100+",'"+name+"',"+dob+",'"+gender+"','"+bg+"',"+mob+",'"+pwd+"')";
+            string s = "Insert into PReg values("+100+",'"+fname+ "','" + lname + "'" + dob+",'"+bg+ "','" + gender + "','" +username+"', '"+password+ "'," + mob + " ,'"+email+"','"+address+"')";
             // s = "insert into Employee values( 120 ,'Smith',10,555678,100)";
-
+             
             con.Open();
             cmd = new SqlCommand(s, con);
             cmd.ExecuteNonQuery();
